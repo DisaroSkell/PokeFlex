@@ -2,18 +2,36 @@
 <html lang="fr">
     <head>
         <title>PokeFlex</title>
-        <link rel="stylesheet" href="styles.css">
+        <!-- Import Styles -->
+        <link rel="stylesheet" href="./assets/styles.css">
+        <!-- Import Vue.js -->
+        <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
+        <!-- Import PokeAPI -->
+        <script src="https://unpkg.com/pokeapi-js-wrapper/dist/index.js"></script>
         <link rel="icon" href="placeholder.ico">
     </head>
     <body>
         <header>
-            <h1>PokeFlex</h1>
+            <h1>PokeFlex<br><sub>The Ultra Dex</sub></h1>
         </header>
-
-        <p>Bonjour</p>
+        
+        <div id="app">
+            <ul>
+                <li><!-- Pokemons ici --></li>
+            </ul>
+        </div>
         
         <footer>
-            <p>Développé par Louis VAN DER PUTTE</p>
+            <p>Développé par <b>Louis VAN DER PUTTE</b></p>
         </footer>
+        <!-- Import App -->
+        <script src="./main.js"></script>
+
+        <!-- Import Components -->
+
+        <!-- Mount App -->
+        <script>
+        const mountedApp = app.mount('#app')
+        </script>
     </body>
 </html>
