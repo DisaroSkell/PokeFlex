@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
+        <meta charset="UTF-8"/>
         <title>PokeFlex</title>
         <!-- Import Styles -->
         <link rel="stylesheet" href="./assets/styles.css">
@@ -11,23 +12,23 @@
         <link rel="icon" href="placeholder.ico">
     </head>
     <body>
-        <header>
-            <h1>PokeFlex<br><sub>The Ultra Dex</sub></h1>
-        </header>
         
         <div id="app">
-            <ul>
-                <li><!-- Pokemons ici --></li>
-            </ul>
-        </div>
+            <div class="header">
+                <h1>PokeFlex<br><sub>The Ultra Dex</sub></h1>
+            </div>
+
+            <pokemon-list></pokemon-list>
         
-        <footer>
-            <p>Développé par <b>Louis VAN DER PUTTE</b></p>
-        </footer>
+            <div class="footer">
+                <p>Développé par <b>Louis VAN DER PUTTE</b></p>
+            </div>
+        </div>
         <!-- Import App -->
         <script src="./main.js"></script>
 
         <!-- Import Components -->
+        <script src="./component/PokemonList.js"></script>
 
         <!-- Mount App -->
         <script>
