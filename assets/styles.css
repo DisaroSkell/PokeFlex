@@ -122,3 +122,19 @@ sub {
     padding: 5px;
     background-color: brown;
 }
+
+.bigContainer {
+    display: flex;
+}
+
+.lilContainer {
+    flex: 1;
+    border: solid;
+    border-radius: 20px;
+    border-color: rgb(19, 14, 10);
+}
+
+.infos {
+    font-family: Alagard;
+    font-size: 20px;
+}

@@ -12,6 +12,7 @@ app.component('pokemon-card', {
     data() {
         return {
             id: null,
+            displayName: "",
             types: [],
             sprite: "",
             spritef: "",
@@ -19,6 +20,7 @@ app.component('pokemon-card', {
         }
     },
     created() {
+        this.displayName = capitilize(this.name)
         P.resource([
             this.url
         ]).then( reponse => {
@@ -45,7 +47,7 @@ app.component('pokemon-card', {
     `
     <div class="pokecard">
         <div class="pokeID"> #{{ this.id }} </div>
-        <p class="pokeName"> {{ this.name }} </p>
+        <p class="pokeName"> {{ this.displayName }} </p>
         
         <img :src="sprite" :alt="name" class="center-div" width="200" @mouseover="back" @mouseleave="front" @click="details">
         <div class="types-container">
