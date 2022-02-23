@@ -6,6 +6,10 @@
     font-family: Retro;
     src: url(Retro\ Gaming.ttf);
 }
+@font-face {
+    font-family: Big;
+    src: url(big.TTF);
+}
 
 body {
     background-image: url(background.png);
@@ -64,9 +68,11 @@ sub {
 }
 
 .pokeID {
-    font-family: 'Courier New', Courier, monospace;
-    background-color: rgb(216, 202, 8);
-    color: rgb(19, 14, 10);
+    font-family: 'Big', sans-serif;
+    font-size: 20px;
+    background-color: rgb(19, 14, 10);
+    border-radius: 10px;
+    color: rgb(216, 202, 8);
     text-align: center;
     margin: 0 25% 0 25%;
 }
