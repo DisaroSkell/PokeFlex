@@ -49,6 +49,16 @@ app.component('pokemon-detail', {
                     this.desc += baddesc[i]
                 }
 
+                baddesc = this.desc.split('\f')
+                this.desc = ""
+
+                for(let i = 0; i<baddesc.length; i++) {
+                    if (i != 0) {
+                        this.desc += " "
+                    }
+                    this.desc += baddesc[i]
+                }
+
                 for(let i = 0; i<resource2[0].genera.length; i++) {
                     if(resource2[0].genera[i].language.name == "en") {
                         this.specie = resource2[0].genera[i].genus
@@ -84,16 +94,16 @@ app.component('pokemon-detail', {
             <div class="bigContainer">
                 <div class="lilContainer"><img :src="sprite" :alt="name" width="350"></div>
                 <div class="lilContainer infos">
-                    <div> {{ this.name }} </div>
-                    <div> Height : {{ this.height }}m </div>
-                    <div> Weight : {{ this.weight }}kg </div>
-                    <div> Abilities:
+                    <div class="pokeSpecie"> The {{ this.specie }} </div>
+                    <div class="pokeName"> {{ this.name }} </div>
+                    <div> <b>Height:</b> {{ this.height }}m </div>
+                    <div> <b>Weight:</b> {{ this.weight }}kg </div>
+                    <div> <b>Abilities:</b>
                         <div v-for="ability in abilities"> {{ ability.ability.name }} </div>
                     </div>
                     <!-- <div> {{ this.stats }} </div>  v-for -->
-                    <div> {{ this.location }} </div>
-                    <div> {{ this.desc }} </div> <!-- Small text -->
-                    <div> {{ this.specie }} </div>
+                    <div> <b>Habitat:</b> {{ this.location }} </div>
+                    <div class="dexEntry"> {{ this.desc }} </div>
                 </div>
             </div>
         </div>
