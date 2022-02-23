@@ -65,29 +65,39 @@ app.component('pokemon-detail', {
     methods: {
         leave() {
             this.$emit('leave')
+        },
+        previous() {
+            this.$emit('prev', this.id)
+        },
+        next() {
+            this.$emit('next', this.id)
         }
     },
     template:
     /*html*/
     `
-    <div class="detailContainer">
-        <div class="pokeID"> #{{ this.idS }} </div>
-        <div class="exitButton" @click="leave">X</div>
-        <div class="bigContainer">
-            <div class="lilContainer"><img :src="sprite" :alt="name" width="350"></div>
-            <div class="lilContainer infos">
-                <div> {{ this.name }} </div>
-                <div> Height : {{ this.height }}m </div>
-                <div> Weight : {{ this.weight }}kg </div>
-                <div> Abilities:
-                    <div v-for="ability in abilities"> {{ ability.ability.name }} </div>
+    <div class="bigContainer">
+        <div class="prevButton lilContainer" @click="previous">&#8592</div>
+        <div class="detailContainer lilContainer">
+            <div class="pokeID"> #{{ this.idS }} </div>
+            <div class="exitButton" @click="leave">X</div>
+            <div class="bigContainer">
+                <div class="lilContainer"><img :src="sprite" :alt="name" width="350"></div>
+                <div class="lilContainer infos">
+                    <div> {{ this.name }} </div>
+                    <div> Height : {{ this.height }}m </div>
+                    <div> Weight : {{ this.weight }}kg </div>
+                    <div> Abilities:
+                        <div v-for="ability in abilities"> {{ ability.ability.name }} </div>
+                    </div>
+                    <!-- <div> {{ this.stats }} </div>  v-for -->
+                    <div> {{ this.location }} </div>
+                    <div> {{ this.desc }} </div> <!-- Small text -->
+                    <div> {{ this.specie }} </div>
                 </div>
-                <!-- <div> {{ this.stats }} </div>  v-for -->
-                <div> {{ this.location }} </div>
-                <div> {{ this.desc }} </div> <!-- Small text -->
-                <div> {{ this.specie }} </div>
             </div>
         </div>
+        <div class="nextButton lilContainer" @click="next">&#8594</div>
     </div>
     `
 })

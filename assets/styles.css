@@ -129,12 +129,23 @@ sub {
 
 .lilContainer {
     flex: 1;
-    border: solid;
-    border-radius: 20px;
-    border-color: rgb(19, 14, 10);
 }
 
 .infos {
-    font-family: Alagard;
+    font-family: 'Alagard', sans-serif;
     font-size: 20px;
+}
+
+.prevButton, .nextButton {
+    top: 50%;
+    border: solid;
+    border-radius: 20px;
+    border-color: rgb(19, 14, 10);
+    background-color: rgb(48, 42, 38);
+    font-family: 'Alagard', sans-serif;
+    font-size: 100px;
+    text-align: center;
+    display: table;
+    margin: auto 20px auto 20px;
+    vertical-align: baseline;
 }
