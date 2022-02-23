@@ -12,12 +12,17 @@ app.component('pokemon-list', {
             this.pokelist = reponse[0].results
         })
     },
+    methods: {
+        changeID(id) {
+            this.detailsID = id
+        }
+    },
     template:
     /*html*/
     `
     <div class="pokelist-container">
         <pokemon-detail v-if="detailsID" :id="detailsID"></pokemon-detail>
-        <pokemon-card v-show="!detailsID" v-on:details="" v-for="pokemon in pokelist" :name="pokemon.name" :url="pokemon.url"></pokemon-card>
+        <pokemon-card v-show="!detailsID" v-on:details="changeID" v-for="pokemon in pokelist" :name="pokemon.name" :url="pokemon.url"></pokemon-card>
     </div>
     `
 })

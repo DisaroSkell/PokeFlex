@@ -37,14 +37,14 @@ app.component('pokemon-card', {
             this.sprite = this.spritef
         },
         details() {
-            this.$emit('details')
+            this.$emit('details', this.id)
         }
     },
     template:
     /*html*/
     `
     <div class="pokecard" @click="details">
-        <div class="pokeID"> {{ this.id }} </div>
+        <div class="pokeID"> #{{ this.id }} </div>
         <p class="pokeName"> {{ this.name }} </p>
         
         <img :src="sprite" :alt="name" class="center-div" width="200" @mouseover="back" @mouseleave="front">

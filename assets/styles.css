@@ -105,5 +105,8 @@ sub {
 }
 
 .detailContainer {
-    color: aliceblue;
+    border: solid;
+    border-radius: 20px;
+    border-color: rgb(19, 14, 10);
+    background-color: rgb(48, 42, 38);
 }
