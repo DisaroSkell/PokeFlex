@@ -1,3 +1,12 @@
+@font-face {
+    font-family: Alagard;
+    src: url(alagard.ttf);
+}
+@font-face {
+    font-family: Retro;
+    src: url(Retro\ Gaming.ttf);
+}
+
 body {
     background-image: url(background.png);
     background-color: white;
@@ -20,7 +29,7 @@ body {
 }
 
 .footer {
-    position:absolute;
+    position: fixed;
     bottom:0;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -38,5 +47,52 @@ sub {
 }
 
 .pokelist-container {
-    margin-top: 150px;
+    margin: 200px 20% 100px 20%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.pokecard {
+    margin: 10px;
+    border: solid;
+    border-radius: 20px;
+    border-color: rgb(19, 14, 10);
+    background-color: rgb(48, 42, 38);
+    padding-bottom: 20px;
+}
+
+.pokeID {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: rgb(216, 202, 8);
+    color: rgb(19, 14, 10);
+    text-align: center;
+    margin: 0 25% 0 25%;
+}
+
+.center-div {
+    margin: 0 auto;
+    display: block;
+}
+
+.pokeName {
+    margin-left: 5px;
+    font-family: 'Alagard', sans-serif;
+    font-size: 30px
+}
+
+.types {
+    font-family: 'Retro', sans-serif;
+    display: inline;
+    color: white;
+    border: 2px solid;
+    border-color: rgb(216, 202, 8);
+    border-radius: 50px;
+    margin: 5px;
+    padding: 5px;
+}
+
+.types-container {
+    align-items: center;
 }
