@@ -43,11 +43,11 @@ app.component('pokemon-card', {
     template:
     /*html*/
     `
-    <div class="pokecard" @click="details">
+    <div class="pokecard">
         <div class="pokeID"> #{{ this.id }} </div>
         <p class="pokeName"> {{ this.name }} </p>
         
-        <img :src="sprite" :alt="name" class="center-div" width="200" @mouseover="back" @mouseleave="front">
+        <img :src="sprite" :alt="name" class="center-div" width="200" @mouseover="back" @mouseleave="front" @click="details">
         <div class="types-container">
             <div v-for="t in types" class="types" :class="t.type.name"> {{ t.type.name }} </div>
         </div>

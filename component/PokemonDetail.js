@@ -44,11 +44,17 @@ app.component('pokemon-detail', {
             return (1000 + this.id).toString().slice(-3)
         }
     },
+    methods: {
+        leave() {
+            this.$emit('leave')
+        }
+    },
     template:
     /*html*/
     `
     <div class="detailContainer">
         <div class="pokeID"> #{{ this.idS }} </div>
+        <div class="exitButton" @click="leave">X</div>
         <div> {{ this.name }} </div>
         <div> {{ this.height }}m </div>
         <div> {{ this.weight }}kg </div>

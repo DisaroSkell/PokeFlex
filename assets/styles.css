@@ -110,3 +110,7 @@ sub {
     border-color: rgb(19, 14, 10);
     background-color: rgb(48, 42, 38);
 }
+
+.exitButton {
+    background-color: brown;
+}
