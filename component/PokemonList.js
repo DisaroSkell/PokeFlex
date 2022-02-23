@@ -1,7 +1,8 @@
 app.component('pokemon-list', {
     data() {
         return {
-            pokelist: []
+            pokelist: [],
+            detailsID: null
         }
     },
     created() {
@@ -15,7 +16,8 @@ app.component('pokemon-list', {
     /*html*/
     `
     <div class="pokelist-container">
-        <pokemon-card v-for="pokemon in pokelist" :name="pokemon.name" :url="pokemon.url"></pokemon-card>
+        <pokemon-detail v-if="detailsID" :id="detailsID"></pokemon-detail>
+        <pokemon-card v-show="!detailsID" v-on:details="" v-for="pokemon in pokelist" :name="pokemon.name" :url="pokemon.url"></pokemon-card>
     </div>
     `
 })

@@ -35,12 +35,15 @@ app.component('pokemon-card', {
         },
         front() {
             this.sprite = this.spritef
+        },
+        details() {
+            this.$emit('details')
         }
     },
     template:
     /*html*/
     `
-    <div class="pokecard">
+    <div class="pokecard" @click="details">
         <div class="pokeID"> {{ this.id }} </div>
         <p class="pokeName"> {{ this.name }} </p>
         

@@ -100,5 +100,10 @@ sub {
 }
 
 .types-container {
-    align-items: center;
+    display: table;
+    margin: 0 auto;
+}
+
+.detailContainer {
+    color: aliceblue;
 }
