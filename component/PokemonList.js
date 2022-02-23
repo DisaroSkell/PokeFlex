@@ -1,6 +1,21 @@
-const P = new Pokedex.Pokedex()
-
 app.component('pokemon-list', {
+    data() {
+        return {
+            pokelist: []
+        }
+    },
+    created() {
+        P.resource([
+            "/api/v2/pokemon"
+        ]).then(function(reponse) {
+            for(let i=0;i<reponse[0].results.length;i++) {
+                console.log(reponse[0].results[i].name)
+            }
+            this.pokelist = reponse[0].results
+            console.log(this.pokelist)
+        })
+        console.log(this.pokelist)
+    },
     template:
     /*html*/
     `
@@ -11,14 +26,5 @@ app.component('pokemon-list', {
             </li>
         </ul>
     </div>
-    `,
-    computed: {
-        pokelist() {
-            P.resource([
-                "/api/v2/pokemon"
-            ]).then(function(reponse) {
-                return reponse[0].results
-            })
-        }
-    }
+    `
 })

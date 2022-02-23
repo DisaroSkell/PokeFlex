@@ -3,3 +3,5 @@ const app = Vue.createApp({
         return {}
     }
 })
+
+const P = new Pokedex.Pokedex()
