@@ -12,6 +12,7 @@ app.component('pokemon-detail', {
             sprite: "",
             height: null,
             weight: null,
+            types: [],
             abilities: [],
             stats: [],
             location: "",
@@ -28,6 +29,7 @@ app.component('pokemon-detail', {
             this.sprite = resource[0].sprites.other["official-artwork"].front_default
             this.height = resource[0].height / 10.
             this.weight = resource[0].weight / 10.
+            this.types = resource[0].types
             this.abilities = resource[0].abilities
 
             for(let i = 0; i<this.abilities.length; i++) {
@@ -67,6 +69,7 @@ app.component('pokemon-detail', {
                 this.sprite = resource[0].sprites.other["official-artwork"].front_default
                 this.height = resource[0].height / 10.
                 this.weight = resource[0].weight / 10.
+                this.types = resource[0].types
                 this.abilities = resource[0].abilities
 
                 for(let i = 0; i<this.abilities.length; i++) {
@@ -122,7 +125,12 @@ app.component('pokemon-detail', {
             <div class="pokeID"> #{{ this.idS }} </div>
             <div class="exitButton clicker" @click="leave">X</div>
             <div class="bigContainer">
-                <div class="lilContainer"><img :src="sprite" :alt="name" width="350"></div>
+                <div class="lilContainer imgType">
+                    <img :src="sprite" :alt="name" width="350">
+                    <div class="types-container">
+                        <div v-for="t in types" class="types" :class="t.type.name"> {{ t.type.name }} </div>
+                    </div>
+                </div>
                 <div class="lilContainer infos">
                     <div class="pokeSpecie"> The {{ this.specie }} </div>
                     <div class="pokeName"> {{ this.name }} </div>

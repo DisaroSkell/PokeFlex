@@ -154,6 +154,10 @@ img {
     flex: 1;
 }
 
+.imgType {
+    margin-bottom: 20px;
+}
+
 .infos {
     font-family: 'Alagard', sans-serif;
     font-size: 20px;

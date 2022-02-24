@@ -17,7 +17,6 @@ const app = Vue.createApp({
             "https://pokeapi.co/api/v2/generation/"
         ]).then( reponse => {
             this.nbgen = reponse[0].count
-            console.log(this.nbgen);
         })
     },
     methods: {
