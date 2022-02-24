@@ -4,7 +4,9 @@ function capitilize(str) {
 
 const app = Vue.createApp({
     data() {
-        return {}
+        return {
+            input: ''
+        }
     }
 })
 

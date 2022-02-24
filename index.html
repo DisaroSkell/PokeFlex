@@ -19,10 +19,10 @@
                 <img src="assets/Logo.png" width="250">
             </div>
             <div>
-                <input>
+                <input type="search" v-model="input" class="searchBar">
             </div>
 
-            <pokemon-list></pokemon-list>
+            <pokemon-list :input="input"></pokemon-list>
         
             <div class="footer">
                 <p>Développé par <b>Louis VAN DER PUTTE</b></p>

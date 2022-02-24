@@ -1,4 +1,7 @@
 app.component('pokemon-list', {
+    props: {
+        input: ''
+    },
     data() {
         return {
             pokelist: [],
@@ -30,6 +33,11 @@ app.component('pokemon-list', {
                 this.detailsID = null
                 this.detailsID = id+1
             }
+        }
+    },
+    watch: {
+        input() {
+            console.log(this.input);
         }
     },
     template:

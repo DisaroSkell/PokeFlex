@@ -36,6 +36,17 @@ img {
     font-size: 20px;
 }
 
+.searchBar {
+    position: fixed;
+    top: 120px;
+    background-color: rgb(48, 42, 38);
+    border-color: rgb(19, 14, 10);
+}
+
+.searchBar:focus {
+    outline: 2px solid rgb(216, 202, 8);
+}
+
 .footer {
     position: fixed;
     bottom:0;
