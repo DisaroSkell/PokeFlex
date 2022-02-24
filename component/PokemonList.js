@@ -18,9 +18,6 @@ app.component('pokemon-list', {
             this.pokelist = reponse[0].results
         })
     },
-    updated() {
-        console.log("Peutetre");
-    },
     watch: {
         detailsID() {
             if (this.detailsID === null) {

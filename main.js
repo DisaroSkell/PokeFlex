@@ -1,3 +1,5 @@
+const P = new Pokedex.Pokedex()
+
 function capitilize(str) {
     return str[0].toUpperCase() + str.slice(1)
 }
@@ -6,8 +8,17 @@ const app = Vue.createApp({
     data() {
         return {
             input: '',
-            details: true
+            details: true,
+            nbgen: 1
         }
+    },
+    created() {
+        P.resource([
+            "https://pokeapi.co/api/v2/generation/"
+        ]).then( reponse => {
+            this.nbgen = reponse[0].count
+            console.log(this.nbgen);
+        })
     },
     methods: {
         noSearch() {
@@ -21,13 +32,10 @@ const app = Vue.createApp({
             document.getElementById("pokeSearch").value=''
         },
         enableSearch() {
-            console.log("a");
             document.getElementById("pokeSearch").removeAttribute("disabled")
         }
     }
 })
-
-const P = new Pokedex.Pokedex()
 
 const premierPoke = 1
 const nbPoke = 151
