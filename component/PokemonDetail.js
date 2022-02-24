@@ -21,46 +21,29 @@ app.component('pokemon-detail', {
         }
     },
     created() {
-        this.url = "https://pokeapi.co/api/v2/pokemon/" + this.id.toString() + "/"
-        P.resource([
-            this.url
-        ]).then( resource => {
-            this.name = capitilize(resource[0].name)
-            this.sprite = resource[0].sprites.other["official-artwork"].front_default
-            this.height = resource[0].height / 10.
-            this.weight = resource[0].weight / 10.
-            this.types = resource[0].types
-            this.abilities = resource[0].abilities
-
-            for(let i = 0; i<this.abilities.length; i++) {
-                this.abilities[i].ability.name = capitilize(this.abilities[i].ability.name)
-            }
-
-            this.stats = resource[0].stats
-            P.resource([
-                resource[0].species.url
-            ]).then( resource2 => {
-                this.location = capitilize(resource2[0].habitat.name)
-
-                this.desc = ''
-                let i = 0
-                while(i<resource2[0].flavor_text_entries.length && this.desc === '') {
-                    if(resource2[0].flavor_text_entries[i].language.name == "en") {
-                        this.desc = resource2[0].flavor_text_entries[i].flavor_text.replace('\n',' ').replace('\f','')
-                    }
-                    i++
-                }
-
-                for(let i = 0; i<resource2[0].genera.length; i++) {
-                    if(resource2[0].genera[i].language.name == "en") {
-                        this.specie = resource2[0].genera[i].genus
-                    }
-                }
-            })
-        })
+        this.fetchData()
     },
     watch: {
         id() {
+            this.fetchData()
+        }
+    },
+    computed: {
+        idS() {
+            return (1000 + this.id).toString().slice(-3)
+        }
+    },
+    methods: {
+        leave() {
+            this.$emit('leave')
+        },
+        previous() {
+            this.$emit('prev', this.id)
+        },
+        next() {
+            this.$emit('next', this.id)
+        },
+        fetchData() {
             this.url = "https://pokeapi.co/api/v2/pokemon/" + this.id.toString() + "/"
             P.resource([
                 this.url
@@ -98,22 +81,6 @@ app.component('pokemon-detail', {
                     }
                 })
             })
-        }
-    },
-    computed: {
-        idS() {
-            return (1000 + this.id).toString().slice(-3)
-        }
-    },
-    methods: {
-        leave() {
-            this.$emit('leave')
-        },
-        previous() {
-            this.$emit('prev', this.id)
-        },
-        next() {
-            this.$emit('next', this.id)
         }
     },
     template:
