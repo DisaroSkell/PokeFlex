@@ -10,8 +10,8 @@ app.component('pokemon-card', {
         },
         name: {
             type: String,
-            required:true
-        },
+            required: true
+        }
     },
     data() {
         return {
@@ -33,6 +33,9 @@ app.component('pokemon-card', {
             this.sprite = reponse[0].sprites.front_shiny
             this.spritef = reponse[0].sprites.front_shiny
             this.spriteb = reponse[0].sprites.back_shiny
+            if(this.id == nbPoke){
+                this.$emit('loaded')
+            }
         })
     },
     computed: {

@@ -13,10 +13,13 @@ app.component('pokemon-list', {
     },
     created() {
         P.resource([
-            "/api/v2/pokemon/?offset=0&limit=151"
+            "/api/v2/pokemon/?offset=" + (premierPoke - 1).toString() + "&limit=" + nbPoke.toString()
         ]).then( reponse => {
             this.pokelist = reponse[0].results
         })
+    },
+    updated() {
+        console.log("Peutetre");
     },
     watch: {
         detailsID() {
@@ -36,16 +39,19 @@ app.component('pokemon-list', {
             this.detailsID = null
         },
         prevPoke(id) {
-            if (id>1) {
+            if (id>premierPoke) {
                 this.detailsID = null
                 this.detailsID = id-1
             }
         },
         nextPoke(id) {
-            if (id<151) {
+            if (id<nbPoke) {
                 this.detailsID = null
                 this.detailsID = id+1
             }
+        },
+        fulload() {
+            this.$emit('fulload')
         }
     },
     template:
@@ -53,7 +59,7 @@ app.component('pokemon-list', {
     `
     <div class="pokelist-container">
         <pokemon-detail v-if="detailsID" v-on:leave="leaver" v-on:prev="prevPoke" v-on:next="nextPoke" :id="detailsID"></pokemon-detail>
-        <pokemon-card v-show="!detailsID" v-on:details="changeID" v-for="pokemon in pokelist" :name="pokemon.name" :url="pokemon.url" :input="input"></pokemon-card>
+        <pokemon-card v-show="!detailsID" v-on:details="changeID" v-on:loaded="fulload" v-for="pokemon in pokelist" :name="pokemon.name" :url="pokemon.url" :input="input"></pokemon-card>
     </div>
     `
 })

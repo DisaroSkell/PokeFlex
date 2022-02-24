@@ -19,8 +19,15 @@ const app = Vue.createApp({
         clearBar() {
             this.input = ''
             document.getElementById("pokeSearch").value=''
+        },
+        enableSearch() {
+            console.log("a");
+            document.getElementById("pokeSearch").removeAttribute("disabled")
         }
     }
 })
 
 const P = new Pokedex.Pokedex()
+
+const premierPoke = 1
+const nbPoke = 151
