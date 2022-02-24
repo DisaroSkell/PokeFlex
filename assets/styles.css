@@ -43,6 +43,7 @@ img {
     border-color: rgb(19, 14, 10);
     font-family: 'Alagard', sans-serif;
     font-size: 20px;
+    margin-left: 5%;
 }
 
 .searchBar:focus {
