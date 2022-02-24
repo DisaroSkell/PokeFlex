@@ -37,7 +37,7 @@ app.component('pokemon-card', {
     },
     computed: {
         searched() {
-            return this.name.includes(this.input) || this.id.toString().includes(this.input)
+            return this.name.includes(this.input.toLowerCase()) || this.id.toString().includes(this.input)
         }
     },
     methods: {
