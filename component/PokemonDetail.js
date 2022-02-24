@@ -39,24 +39,14 @@ app.component('pokemon-detail', {
                 resource[0].species.url
             ]).then( resource2 => {
                 this.location = capitilize(resource2[0].habitat.name)
-                let baddesc = resource2[0].flavor_text_entries[0].flavor_text.split('\n')
-                this.desc = ""
 
-                for(let i = 0; i<baddesc.length; i++) {
-                    if (i != 0) {
-                        this.desc += " "
+                this.desc = ''
+                let i = 0
+                while(i<resource2[0].flavor_text_entries.length && this.desc === '') {
+                    if(resource2[0].flavor_text_entries[i].language.name == "en") {
+                        this.desc = resource2[0].flavor_text_entries[i].flavor_text.replace('\n',' ').replace('\f','')
                     }
-                    this.desc += baddesc[i]
-                }
-
-                baddesc = this.desc.split('\f')
-                this.desc = ""
-
-                for(let i = 0; i<baddesc.length; i++) {
-                    if (i != 0) {
-                        this.desc += " "
-                    }
-                    this.desc += baddesc[i]
+                    i++
                 }
 
                 for(let i = 0; i<resource2[0].genera.length; i++) {
@@ -88,26 +78,16 @@ app.component('pokemon-detail', {
                     resource[0].species.url
                 ]).then( resource2 => {
                     this.location = capitilize(resource2[0].habitat.name)
-                    let baddesc = resource2[0].flavor_text_entries[0].flavor_text.split('\n')
-                    this.desc = ""
-
-                    for(let i = 0; i<baddesc.length; i++) {
-                        if (i != 0) {
-                            this.desc += " "
+    
+                    this.desc = ''
+                    let i = 0
+                    while(i<resource2[0].flavor_text_entries.length && this.desc === '') {
+                        if(resource2[0].flavor_text_entries[i].language.name == "en") {
+                            this.desc = resource2[0].flavor_text_entries[i].flavor_text.replace('\n',' ').replace('\f','')
                         }
-                        this.desc += baddesc[i]
+                        i++
                     }
-
-                    baddesc = this.desc.split('\f')
-                    this.desc = ""
-
-                    for(let i = 0; i<baddesc.length; i++) {
-                        if (i != 0) {
-                            this.desc += " "
-                        }
-                        this.desc += baddesc[i]
-                    }
-
+    
                     for(let i = 0; i<resource2[0].genera.length; i++) {
                         if(resource2[0].genera[i].language.name == "en") {
                             this.specie = resource2[0].genera[i].genus
