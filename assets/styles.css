@@ -39,19 +39,11 @@ body {
     padding-bottom: 5px;
     font-size: 15px;
     text-align: center;
-}
-
-h1 {
-    padding-left: 30px;
-}
-
-sub {
-    font-size: 20px;
-    text-decoration: underline;
+    font-family: 'Alagard', sans-serif;
 }
 
 .pokelist-container {
-    margin: 200px 20% 100px 20%;
+    margin: 150px 20% 100px 20%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
