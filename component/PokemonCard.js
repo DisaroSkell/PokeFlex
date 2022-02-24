@@ -55,7 +55,11 @@ app.component('pokemon-card', {
                 this.types = reponse[0].types
                 this.sprite = reponse[0].sprites.front_shiny
                 this.spritef = reponse[0].sprites.front_shiny
-                this.spriteb = reponse[0].sprites.back_shiny
+                if (reponse[0].sprites.back_shiny) {
+                    this.spriteb = reponse[0].sprites.back_shiny
+                } else {
+                    this.spriteb = reponse[0].sprites.back_default
+                }
                 if(this.id == nbPoke){
                     this.$emit('loaded')
                 }
