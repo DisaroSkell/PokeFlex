@@ -24,23 +24,16 @@ app.component('pokemon-card', {
         }
     },
     created() {
-        this.displayName = capitilize(this.name)
-        P.resource([
-            this.url
-        ]).then( reponse => {
-            this.id = reponse[0].id
-            this.types = reponse[0].types
-            this.sprite = reponse[0].sprites.front_shiny
-            this.spritef = reponse[0].sprites.front_shiny
-            this.spriteb = reponse[0].sprites.back_shiny
-            if(this.id == nbPoke){
-                this.$emit('loaded')
-            }
-        })
+        this.fetchData()
     },
     computed: {
         searched() {
             return this.name.includes(this.input.toLowerCase()) || this.id.toString().includes(this.input)
+        }
+    },
+    watch: {
+        url() {
+            this.fetchData()
         }
     },
     methods: {
@@ -52,6 +45,21 @@ app.component('pokemon-card', {
         },
         details() {
             this.$emit('details', this.id)
+        },
+        fetchData() {
+            this.displayName = capitilize(this.name)
+            P.resource([
+                this.url
+            ]).then( reponse => {
+                this.id = reponse[0].id
+                this.types = reponse[0].types
+                this.sprite = reponse[0].sprites.front_shiny
+                this.spritef = reponse[0].sprites.front_shiny
+                this.spriteb = reponse[0].sprites.back_shiny
+                if(this.id == nbPoke){
+                    this.$emit('loaded')
+                }
+            })
         }
     },
     template:

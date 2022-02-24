@@ -9,7 +9,9 @@ const app = Vue.createApp({
         return {
             input: '',
             details: true,
-            nbgen: 1
+            nbgen: 1,
+            firstPoke: 1,
+            nbPoke: 151
         }
     },
     created() {
@@ -32,6 +34,10 @@ const app = Vue.createApp({
         },
         enableSearch() {
             document.getElementById("pokeSearch").removeAttribute("disabled")
+        },
+        changeGen(firstPoke,nbPoke) {
+            this.firstPoke = firstPoke
+            this.nbPoke = nbPoke
         }
     }
 })

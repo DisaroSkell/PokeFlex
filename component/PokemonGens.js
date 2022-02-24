@@ -7,7 +7,8 @@ app.component('pokemon-gens', {
     },
     data() {
         return {
-            gentab: []
+            gentab: [],
+            selected: null
         }
     },
     watch: {
@@ -20,16 +21,28 @@ app.component('pokemon-gens', {
                     while(j < reponse[0].names.length && reponse[0].names[j].language.name != "en") {
                         j++
                     }
-                    this.gentab[reponse[0].id - 1] = reponse[0].names[j].name
+                    this.gentab[reponse[0].id - 1] = {name: reponse[0].names[j].name, count: reponse[0].pokemon_species.length}
                 })
             }
+        },
+        selected() {
+            let firstPoke = 1
+
+            for(let i = 0; i < this.selected - 1; i++) {
+                firstPoke += this.gentab[i].count
+            }
+
+            let nbPoke = this.gentab[this.selected - 1].count
+
+            this.$emit('genselec', firstPoke, nbPoke)
         }
     },
     template:
     /*html*/
     `
-    <select name="gen">
-        <option v-for="gen in gentab" :value="gen">{{ gen }}</option>
+    <select v-model="selected" class="genSelec">
+        <option disabled value=""> Select a generation </option>
+        <option v-for="(gen, index) in gentab" :value="index+1">{{ gen.name }}</option>
     </select>
     `
 })

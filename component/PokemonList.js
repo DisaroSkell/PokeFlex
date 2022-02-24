@@ -3,6 +3,14 @@ app.component('pokemon-list', {
         input: {
             type: String,
             required: false
+        },
+        premierpoke: {
+            type: Number,
+            required: true
+        },
+        nbpoke: {
+            type: Number,
+            required: true
         }
     },
     data() {
@@ -12,13 +20,13 @@ app.component('pokemon-list', {
         }
     },
     created() {
-        P.resource([
-            "/api/v2/pokemon/?offset=" + (premierPoke - 1).toString() + "&limit=" + nbPoke.toString()
-        ]).then( reponse => {
-            this.pokelist = reponse[0].results
-        })
+        this.fetchData()
     },
     watch: {
+        premierpoke() {
+            this.fetchData()
+            console.log(this.pokelist);
+        },
         detailsID() {
             if (this.detailsID === null) {
                 this.$emit('unfocus')
@@ -36,19 +44,26 @@ app.component('pokemon-list', {
             this.detailsID = null
         },
         prevPoke(id) {
-            if (id>premierPoke) {
+            if (id>this.premierpoke) {
                 this.detailsID = null
                 this.detailsID = id-1
             }
         },
         nextPoke(id) {
-            if (id<nbPoke) {
+            if (id<(this.premierpoke + this.nbpoke - 1)) {
                 this.detailsID = null
                 this.detailsID = id+1
             }
         },
         fulload() {
             this.$emit('fulload')
+        },
+        fetchData() {
+            P.resource([
+                "/api/v2/pokemon/?offset=" + (this.premierpoke - 1).toString() + "&limit=" + this.nbpoke.toString()
+            ]).then( reponse => {
+                this.pokelist = reponse[0].results
+            })
         }
     },
     template:

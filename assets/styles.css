@@ -187,3 +187,8 @@ img {
     cursor: pointer;
     user-select: none;
 }
+
+.genSelec {
+    display: table;
+    margin: auto 20px 10px auto;
+}

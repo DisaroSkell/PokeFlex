@@ -17,13 +17,13 @@
         <div id="app">
             <div class="header">
                 <img src="assets/Logo.png" width="250">
-                <pokemon-gens :nbgen="nbgen"></pokemon-gens>
+                <pokemon-gens v-on:genselec="changeGen" v-show="details" :nbgen="nbgen"></pokemon-gens>
             </div>
             <div>
                 <input id="pokeSearch" v-show="details" type="search" placeholder="Search by name or ID" v-model="input" class="searchBar" disabled="disabled">
             </div>
 
-            <pokemon-list :input="input" v-on:fulload="enableSearch" v-on:clearsearch="clearBar" v-on:focus="noSearch" v-on:unfocus="search"></pokemon-list>
+            <pokemon-list :input="input" :premierpoke="firstPoke" :nbpoke="nbPoke" v-on:fulload="enableSearch" v-on:clearsearch="clearBar" v-on:focus="noSearch" v-on:unfocus="search"></pokemon-list>
         
             <div class="footer">
                 <p>Développé par <b>Louis VAN DER PUTTE</b></p>
