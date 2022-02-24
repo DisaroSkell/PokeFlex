@@ -117,10 +117,10 @@ app.component('pokemon-detail', {
     /*html*/
     `
     <div class="bigContainer">
-        <div class="prevButton lilContainer" @click="previous">&#8592</div>
+        <div class="prevButton lilContainer clicker" @click="previous">&#8592</div>
         <div class="detailContainer lilContainer">
             <div class="pokeID"> #{{ this.idS }} </div>
-            <div class="exitButton" @click="leave">X</div>
+            <div class="exitButton clicker" @click="leave">X</div>
             <div class="bigContainer">
                 <div class="lilContainer"><img :src="sprite" :alt="name" width="350"></div>
                 <div class="lilContainer infos">
@@ -137,7 +137,7 @@ app.component('pokemon-detail', {
                 </div>
             </div>
         </div>
-        <div class="nextButton lilContainer" @click="next">&#8594</div>
+        <div class="nextButton lilContainer clicker" @click="next">&#8594</div>
     </div>
     `
 })
