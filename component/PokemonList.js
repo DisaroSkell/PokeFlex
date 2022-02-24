@@ -25,7 +25,6 @@ app.component('pokemon-list', {
     watch: {
         premierpoke() {
             this.fetchData()
-            console.log(this.pokelist);
         },
         detailsID() {
             if (this.detailsID === null) {

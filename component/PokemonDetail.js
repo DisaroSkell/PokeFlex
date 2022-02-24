@@ -63,7 +63,9 @@ app.component('pokemon-detail', {
                 P.resource([
                     resource[0].species.url
                 ]).then( resource2 => {
-                    this.location = capitilize(resource2[0].habitat.name)
+                    if (resource[0].habitat){
+                        this.location = capitilize(resource2[0].habitat.name)
+                    }
     
                     this.desc = ''
                     let i = 0
@@ -99,16 +101,16 @@ app.component('pokemon-detail', {
                     </div>
                 </div>
                 <div class="lilContainer infos">
-                    <div class="pokeSpecie"> The {{ this.specie }} </div>
-                    <div class="pokeName"> {{ this.name }} </div>
-                    <div> <b>Height:</b> {{ this.height }}m </div>
-                    <div> <b>Weight:</b> {{ this.weight }}kg </div>
-                    <div> <b>Abilities:</b>
+                    <div v-if="this.specie" class="pokeSpecie"> The {{ this.specie }} </div>
+                    <div v-if="this.name" class="pokeName"> {{ this.name }} </div>
+                    <div v-if="this.height"> <b>Height:</b> {{ this.height }}m </div>
+                    <div v-if="this.weight"> <b>Weight:</b> {{ this.weight }}kg </div>
+                    <div v-if="this.abilities != []"> <b>Abilities:</b>
                         <div v-for="ability in abilities"> {{ ability.ability.name }} </div>
                     </div>
                     <!-- <div> {{ this.stats }} </div>  v-for -->
-                    <div> <b>Habitat:</b> {{ this.location }} </div>
-                    <div class="dexEntry"> {{ this.desc }} </div>
+                    <div v-if="this.location"> <b>Habitat:</b> {{ this.location }} </div>
+                    <div  v-if="this.desc" class="dexEntry"> {{ this.desc }} </div>
                 </div>
             </div>
         </div>
