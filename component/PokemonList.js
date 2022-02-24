@@ -23,6 +23,7 @@ app.component('pokemon-list', {
             if (this.detailsID === null) {
                 this.$emit('unfocus')
             } else {
+                this.$emit('clearsearch')
                 this.$emit('focus')
             }
         }

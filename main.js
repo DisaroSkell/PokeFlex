@@ -15,6 +15,10 @@ const app = Vue.createApp({
         },
         search() {
             this.details = true
+        },
+        clearBar() {
+            this.input = ''
+            document.getElementById("pokeSearch").value=''
         }
     }
 })
