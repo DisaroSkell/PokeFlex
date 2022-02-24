@@ -5,7 +5,16 @@ function capitilize(str) {
 const app = Vue.createApp({
     data() {
         return {
-            input: ''
+            input: '',
+            details: true
+        }
+    },
+    methods: {
+        noSearch() {
+            this.details = false
+        },
+        search() {
+            this.details = true
         }
     }
 })

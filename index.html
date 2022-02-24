@@ -19,10 +19,10 @@
                 <img src="assets/Logo.png" width="250">
             </div>
             <div>
-                <input type="search" v-model="input" class="searchBar">
+                <input v-if="details" type="search" v-model="input" class="searchBar">
             </div>
 
-            <pokemon-list :input="input"></pokemon-list>
+            <pokemon-list :input="input" v-on:focus="noSearch" v-on:unfocus="search"></pokemon-list>
         
             <div class="footer">
                 <p>Développé par <b>Louis VAN DER PUTTE</b></p>

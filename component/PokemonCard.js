@@ -1,5 +1,9 @@
 app.component('pokemon-card', {
     props: {
+        input: {
+            type: String,
+            required: false
+        },
         url: {
             type: String,
             required: true
@@ -31,6 +35,11 @@ app.component('pokemon-card', {
             this.spriteb = reponse[0].sprites.back_shiny
         })
     },
+    computed: {
+        searched() {
+            return this.name.includes(this.input) || this.id.toString().includes(this.input)
+        }
+    },
     methods: {
         back() {
             this.sprite = this.spriteb
@@ -45,7 +54,7 @@ app.component('pokemon-card', {
     template:
     /*html*/
     `
-    <div class="pokecard">
+    <div v-show="searched" class="pokecard">
         <div class="pokeID"> #{{ this.id }} </div>
         <p class="pokeName"> {{ this.displayName }} </p>
         

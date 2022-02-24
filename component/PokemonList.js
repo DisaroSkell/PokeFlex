@@ -1,6 +1,9 @@
 app.component('pokemon-list', {
     props: {
-        input: ''
+        input: {
+            type: String,
+            required: false
+        }
     },
     data() {
         return {
@@ -14,6 +17,15 @@ app.component('pokemon-list', {
         ]).then( reponse => {
             this.pokelist = reponse[0].results
         })
+    },
+    watch: {
+        detailsID() {
+            if (this.detailsID === null) {
+                this.$emit('unfocus')
+            } else {
+                this.$emit('focus')
+            }
+        }
     },
     methods: {
         changeID(id) {
@@ -35,17 +47,12 @@ app.component('pokemon-list', {
             }
         }
     },
-    watch: {
-        input() {
-            console.log(this.input);
-        }
-    },
     template:
     /*html*/
     `
     <div class="pokelist-container">
         <pokemon-detail v-if="detailsID" v-on:leave="leaver" v-on:prev="prevPoke" v-on:next="nextPoke" :id="detailsID"></pokemon-detail>
-        <pokemon-card v-show="!detailsID" v-on:details="changeID" v-for="pokemon in pokelist" :name="pokemon.name" :url="pokemon.url"></pokemon-card>
+        <pokemon-card v-show="!detailsID" v-on:details="changeID" v-for="pokemon in pokelist" :name="pokemon.name" :url="pokemon.url" :input="input"></pokemon-card>
     </div>
     `
 })
