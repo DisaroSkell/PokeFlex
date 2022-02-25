@@ -63,7 +63,7 @@ app.component('pokemon-detail', {
                 P.resource([
                     resource[0].species.url
                 ]).then( resource2 => {
-                    if (resource[0].habitat){
+                    if (resource2[0].habitat){
                         this.location = capitilize(resource2[0].habitat.name)
                     }
     
