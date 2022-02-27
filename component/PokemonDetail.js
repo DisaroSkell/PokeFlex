@@ -1,49 +1,49 @@
 app.component('pokemon-detail', {
-    props: {
-        id: {
+    props: {                // All the property gave by main.js using v-bind.
+        id: {               // Stores the Pokemon ID.
             type: Number,
             required: true
         }
     },
     data() {
         return {
-            url: "",
-            name: "",
-            sprite: "",
-            height: null,
-            weight: null,
-            types: [],
-            abilities: [],
-            stats: [],
-            location: "",
-            desc: "",
-            specie: ""
+            url: "",        // Stores the URL corresponding to the Pokemon we want the details of in the API.
+            name: "",       // Stores the name of the Pokemon we want to display.
+            sprite: "",     // Stores the sprite URL of the Pokemon we want to display.
+            height: null,   // Stores the height of the Pokemon we want to display.
+            weight: null,   // Stores the weight of the Pokemon we want to display.
+            types: [],      // Stores the type array of the Pokemon we want to display. (can be one type ou double type)
+            abilities: [],  // Stores the ability array of the Pokemon we want to display.
+            stats: [],      // Stores the stat array of the Pokemon we want to display.
+            location: "",   // Stores the location of the Pokemon we want to display.
+            desc: "",       // Stores the PokeDex entry of the Pokemon we want to display.
+            specie: ""      // Stores the specie of the Pokemon we want to display.
         }
     },
-    created() {
+    created() {             // Fetch the API data on creation.
         this.fetchData()
     },
     watch: {
-        id() {
+        id() {              // If the id changes, we need to fetch the data again.
             this.fetchData()
         }
     },
     computed: {
-        idS() {
+        idS() {             // The displayed version of the Pokemon ID.
             return (1000 + this.id).toString().slice(-3)
         }
     },
     methods: {
-        leave() {
+        leave() {           // Emits that we want to leave the detail view.
             this.$emit('leave')
         },
-        previous() {
-            this.$emit('prev', this.id)
+        previous() {        // Emits that we want the previous Pokemon.
+            this.$emit('prev')
         },
-        next() {
-            this.$emit('next', this.id)
+        next() {            // Emits that we want the next Pokemon.
+            this.$emit('next')
         },
-        fetchData() {
+        fetchData() {       // Fetch all of the data needed for the Pokemon in the API.
             this.url = "https://pokeapi.co/api/v2/pokemon/" + this.id.toString() + "/"
             P.resource([
                 this.url

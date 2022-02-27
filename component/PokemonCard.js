@@ -1,52 +1,53 @@
 app.component('pokemon-card', {
-    props: {
-        input: {
+    props: {                // All the property gave by main.js using v-bind.
+        input: {            // Stores the search input.
             type: String,
             required: false
         },
-        url: {
+        url: {              // Stores the URL corresponding to the Pokemon to display on the card in the API.
             type: String,
             required: true
         },
-        name: {
+        name: {             // Stores the name of the Pokemon to display on the card.
             type: String,
             required: true
         }
     },
     data() {
         return {
-            id: null,
-            displayName: "",
-            types: [],
-            sprite: "",
-            spritef: "",
-            spriteb: ""
+            id: null,       // Stores the id of the Pokemon to display on the card.
+            displayName: "",// Stores the name of the Pokemon to display on the card. (that one will be displayed, the other one will not)
+            types: [],      // Stores the type array of the Pokemon to display on the card. (can be one type ou double type)
+            // The three next variables store the sprite URL of the Pokemon to display on the card.
+            sprite: "",     // This one will just swap between the next two when hovered.
+            spritef: "",    // Keeps the front sprite.
+            spriteb: ""     // Keeps the back sprite.
         }
     },
-    created() {
+    created() {             // Fetch the API data on creation.
         this.fetchData()
     },
     computed: {
-        searched() {
+        searched() {        // Boolean that indicates if the Pokemon has been searched or not. Used for display.
             return this.name.includes(this.input.toLowerCase()) || this.id.toString().includes(this.input)
         }
     },
     watch: {
-        url() {
+        url() {             // If the URL changes, we need to fetch the Pokemon data in the API.
             this.fetchData()
         }
     },
     methods: {
-        back() {
+        back() {            // We switch the sprite to display to the back sprite.
             this.sprite = this.spriteb
         },
-        front() {
+        front() {           // We switch the sprite to display to the front sprite.
             this.sprite = this.spritef
         },
-        details() {
+        details() {         // Emits a signal to show details of the chosen Pokemon.
             this.$emit('details', this.id)
         },
-        fetchData() {
+        fetchData() {       // Fetch all of the data needed for the Pokemon in the API.
             this.displayName = capitilize(this.name)
             P.resource([
                 this.url
@@ -60,7 +61,7 @@ app.component('pokemon-card', {
                 } else {
                     this.spriteb = reponse[0].sprites.back_default
                 }
-                if(this.id == nbPoke){
+                if(this.id == 151){
                     this.$emit('loaded')
                 }
             })
