@@ -41,6 +41,3 @@ const app = Vue.createApp({
         }
     }
 })
-
-const premierPoke = 1
-const nbPoke = 151
