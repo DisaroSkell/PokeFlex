@@ -8,7 +8,7 @@ app.component('pokemon-card', {
             type: String,
             required: true
         },
-        name: {             // Stores the name of the Pokemon to display on the card.
+        name: {             // Stores the name of the Pokemon.
             type: String,
             required: true
         }
@@ -16,7 +16,6 @@ app.component('pokemon-card', {
     data() {
         return {
             id: null,       // Stores the id of the Pokemon to display on the card.
-            displayName: "",// Stores the name of the Pokemon to display on the card. (that one will be displayed, the other one will not)
             types: [],      // Stores the type array of the Pokemon to display on the card. (can be one type ou double type)
             // The three next variables store the sprite URL of the Pokemon to display on the card.
             sprite: "",     // This one will just swap between the next two when hovered.
@@ -30,6 +29,9 @@ app.component('pokemon-card', {
     computed: {
         searched() {        // Boolean that indicates if the Pokemon has been searched or not. Used for display.
             return this.name.includes(this.input.toLowerCase()) || this.id.toString().includes(this.input)
+        },
+        displayName() {     // Stores the name of the Pokemon to display on the card.
+            return capitilize(this.name)
         }
     },
     watch: {
@@ -48,7 +50,6 @@ app.component('pokemon-card', {
             this.$emit('details', this.id)
         },
         fetchData() {       // Fetch all of the data needed for the Pokemon in the API.
-            this.displayName = capitilize(this.name)
             P.resource([
                 this.url
             ]).then( reponse => {
